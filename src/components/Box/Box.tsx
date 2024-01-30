@@ -17,6 +17,7 @@ import {
 import {Theme} from '../../theme/theme';
 
 export const Box = createBox<Theme>();
+export type SRTBoxProps = React.ComponentProps<typeof Box>;
 
 export type TouchableOpacityPropsBox = BackgroundColorProps<Theme> &
   LayoutProps<Theme> &

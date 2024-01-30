@@ -11,7 +11,9 @@ function App(): React.JSX.Element {
     <SafeAreaView>
       <ThemeProvider theme={theme}>
         <Box paddingHorizontal="s24">
-          <Text preset="headingLarge">Projeto Nubble - CoffStack</Text>
+          <Text color="backgroundContrast" preset="headingLarge">
+            Projeto Nubble - CoffStack
+          </Text>
           <Box pt="s16">
             <Button backgroundColor="error" title="Entrar" />
           </Box>

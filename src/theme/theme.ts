@@ -55,6 +55,9 @@ export const theme = createTheme({
     s8: 8,
     s16: 16,
   },
+  textVariants: {
+    defaults: {},
+  },
 });
 
 export type Theme = typeof theme;
