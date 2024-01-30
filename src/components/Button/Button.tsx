@@ -1,27 +1,29 @@
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
 import {Text} from '../Text/Text';
 // import {useTheme} from '@shopify/restyle';
 // import {Theme} from '../../theme/theme';
 import {TouchableOpacityBox, TouchableOpacityPropsBox} from '../Box/Box';
 import {ButtonPreset, ButtonPresets} from './ButtonPresets';
+import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 type ButtonProps = {
   title: string;
   loading?: boolean;
   preset?: ButtonPreset;
+  disabled?: boolean;
 } & TouchableOpacityPropsBox;
 
 export function Button({
   title,
   loading,
   preset = 'primary',
+  disabled,
   ...TouchableOpacityPropsBox
 }: ButtonProps) {
-  const buttonPreset = ButtonPresets[preset];
-  // const {colors} = useTheme<Theme>();
+  const buttonPreset = ButtonPresets[preset][disabled ? 'disabled' : 'default'];
   return (
     <TouchableOpacityBox
+      disabled={disabled || loading}
       height={50}
       alignItems="center"
       justifyContent="center"
@@ -29,7 +31,7 @@ export function Button({
       {...buttonPreset.container}
       {...TouchableOpacityPropsBox}>
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator color={buttonPreset.content} />
       ) : (
         <Text color={buttonPreset.content} preset="paragraphMedium" bold>
           {title}

@@ -14,9 +14,10 @@ function App(): React.JSX.Element {
           <Text color="backgroundContrast" preset="headingLarge">
             Projeto Nubble - CoffStack
           </Text>
-          <Button preset="primary" title="Entrar" mt="s16" />
-          <Button preset="outline" title="Outline" mt="s16" />
+          <Button disabled preset="primary" title="Entrar" mt="s16" />
+          <Button disabled preset="outline" title="Outline" mt="s16" />
           <Button loading title="Loading" mt="s16" />
+          <Button preset="outline" loading title="Loading" mt="s16" />
         </Box>
       </ThemeProvider>
     </SafeAreaView>
