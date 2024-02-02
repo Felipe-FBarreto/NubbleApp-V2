@@ -102,6 +102,9 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    configurations.all {
+        resolutionStrategy { force 'com.android.tools.build:gradle:7.0.0' }
+    }
 }
 
 dependencies {
