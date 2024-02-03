@@ -13,11 +13,11 @@ function App(): React.JSX.Element {
       <ThemeProvider theme={theme}>
         <Box paddingHorizontal="s24">
           <Text color="backgroundContrast" preset="headingLarge">
-            Projeto Nubble - CoffStack
+            Projeto Nubble - CoffStack 123
           </Text>
 
-          <Icon name="eyeOff" />
-          <Icon name="eyeOn" />
+          <Icon name="eyeOff" color="backgroundContrast" size={90} />
+          <Icon name="eyeOn" color="backgroundContrast" size={90} />
         </Box>
       </ThemeProvider>
     </SafeAreaView>
