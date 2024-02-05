@@ -53,6 +53,7 @@ export const theme = createTheme({
   borderRadii: {
     s4: 4,
     s8: 8,
+    s12: 12,
     s16: 16,
   },
   textVariants: {
