@@ -1,6 +1,6 @@
 import React from 'react';
 import {Svg, Path} from 'react-native-svg';
-import {IconBase} from '../Icon';
+import {IconBase} from '../../components/Icon/Icon';
 
 export function EyeOnIcon({size = 20, color = 'black'}: IconBase) {
   return (
