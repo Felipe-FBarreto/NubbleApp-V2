@@ -7,7 +7,7 @@ import {Text} from '../../../components/Text/Text';
 
 export function SingUpScreen() {
   return (
-    <Screen canGoBack>
+    <Screen canGoBack scrollable>
       <Text mb="s32" preset="headingLarge">
         Criar uma conta
       </Text>
@@ -21,6 +21,30 @@ export function SingUpScreen() {
         label="E-mail"
         placeholder="Digite seu e-mail"
         boxProps={{mb: 's16'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        rightComponent={<Icon name="eyeOn" />}
+        boxProps={{mb: 's48'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        rightComponent={<Icon name="eyeOn" />}
+        boxProps={{mb: 's48'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        rightComponent={<Icon name="eyeOn" />}
+        boxProps={{mb: 's48'}}
+      />
+      <TextInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        rightComponent={<Icon name="eyeOn" />}
+        boxProps={{mb: 's48'}}
       />
       <TextInput
         label="Senha"
