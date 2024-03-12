@@ -5,7 +5,10 @@ import {TextInput} from '../../../../components/TextInput/TextInput';
 import {Screen} from '../../../../components/Screen/Screen';
 import {PasswordInput} from '../../../../components/PasswordInput/PasswordInput';
 
-export function LoginScreen() {
+export function LoginScreen({navigation}) {
+  function navigateToSingUpScreen() {
+    navigation.navigate('SingUpScreen');
+  }
   return (
     <Screen>
       <Text preset="headingLarge" mb="s8">
@@ -28,7 +31,12 @@ export function LoginScreen() {
         Esquecci minha senha
       </Text>
       <Button title="Entrar" mt="s48" />
-      <Button title="Criar uma conta" mt="s12" preset="outline" />
+      <Button
+        onPress={navigateToSingUpScreen}
+        title="Criar uma conta"
+        mt="s12"
+        preset="outline"
+      />
     </Screen>
   );
 }

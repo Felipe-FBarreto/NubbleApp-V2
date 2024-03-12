@@ -1,16 +1,15 @@
 import React from 'react';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
-import {LoginScreen} from './src/screens/auth/Login/LoginScreen/LoginScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {SingUpScreen} from './src/screens/auth/SingUpScreen/SingUpScreen';
+
+import {Router} from './src/routes/Router';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <LoginScreen />
-        {/* <SingUpScreen /> */}
+        <Router />
       </ThemeProvider>
     </SafeAreaProvider>
   );
