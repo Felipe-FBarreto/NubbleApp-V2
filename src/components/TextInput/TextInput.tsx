@@ -9,7 +9,7 @@ import {Box, SRTBoxProps} from '../Box/Box';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';
 import {useAppTheme} from '../../hooks/useAppTheme';
 
-type TextInputProps = {
+export type TextInputProps = {
   label: string;
   erroMessage?: string;
   rightComponent?: ReactElement;

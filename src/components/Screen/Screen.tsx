@@ -21,6 +21,7 @@ export function Screen({
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
   return (
     <KeyboardAvoidingView
+      style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Container>
         <Box

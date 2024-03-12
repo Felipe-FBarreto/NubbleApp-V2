@@ -6,7 +6,11 @@ type Props = {
 };
 
 export function ScrollViewContainer({children}: Props) {
-  return <ScrollView>{children}</ScrollView>;
+  return (
+    <ScrollView keyboardShouldPersistTaps="handled" style={{flex: 1}}>
+      {children}
+    </ScrollView>
+  );
 }
 
 export function ViewContainer({children}: Props) {

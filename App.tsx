@@ -9,8 +9,8 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        {/* <LoginScreen /> */}
-        <SingUpScreen />
+        <LoginScreen />
+        {/* <SingUpScreen /> */}
       </ThemeProvider>
     </SafeAreaProvider>
   );

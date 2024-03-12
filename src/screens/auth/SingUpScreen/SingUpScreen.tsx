@@ -1,9 +1,9 @@
 import React from 'react';
 import {Screen} from '../../../components/Screen/Screen';
 import {TextInput} from '../../../components/TextInput/TextInput';
-import {Icon} from '../../../components/Icon/Icon';
 import {Button} from '../../../components/Button/Button';
 import {Text} from '../../../components/Text/Text';
+import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 
 export function SingUpScreen() {
   return (
@@ -22,34 +22,9 @@ export function SingUpScreen() {
         placeholder="Digite seu e-mail"
         boxProps={{mb: 's16'}}
       />
-      <TextInput
+      <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
-        rightComponent={<Icon name="eyeOn" />}
-        boxProps={{mb: 's48'}}
-      />
-      <TextInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        rightComponent={<Icon name="eyeOn" />}
-        boxProps={{mb: 's48'}}
-      />
-      <TextInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        rightComponent={<Icon name="eyeOn" />}
-        boxProps={{mb: 's48'}}
-      />
-      <TextInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        rightComponent={<Icon name="eyeOn" />}
-        boxProps={{mb: 's48'}}
-      />
-      <TextInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        rightComponent={<Icon name="eyeOn" />}
         boxProps={{mb: 's48'}}
       />
       <Button title="Criar minha conta" />
