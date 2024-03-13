@@ -1,9 +1,15 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {LoginScreen} from '../screens/auth/Login/LoginScreen/LoginScreen';
 import {SingUpScreen} from '../screens/auth/SingUpScreen/SingUpScreen';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  LoginScreen: undefined;
+  SingUpScreen: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 export function Router() {
   return (

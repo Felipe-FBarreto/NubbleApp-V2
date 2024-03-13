@@ -4,8 +4,12 @@ import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
 import {Text} from '../../../components/Text/Text';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../routes/Router';
 
-export function SingUpScreen() {
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SingUpScreen'>;
+
+export function SingUpScreen(props: ScreenProps) {
   return (
     <Screen canGoBack scrollable>
       <Text mb="s32" preset="headingLarge">
