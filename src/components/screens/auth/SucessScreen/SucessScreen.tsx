@@ -3,16 +3,20 @@ import {Screen} from '../../../Screen/Screen';
 import {Icon} from '../../../Icon/Icon';
 import {Text} from '../../../Text/Text';
 import {Button} from '../../../Button/Button';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../../routes/Router';
 
-export function SucessScreen() {
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SucessScreen'>;
+
+export function SucessScreen({route}: ScreenProps) {
   return (
     <Screen>
-      <Icon name="bellOn" />
+      <Icon {...route.params.icon} />
       <Text preset="headingLarge" mt="s24">
-        Text
+        {route.params.title}
       </Text>
       <Text mt="s16" preset="paragraphLarge">
-        Description
+        {route.params.description}
       </Text>
       <Button mt="s40" title="Voltar ao início" />
     </Screen>
