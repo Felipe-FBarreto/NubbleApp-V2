@@ -6,12 +6,16 @@ import {Text} from '../../../Text/Text';
 import {PasswordInput} from '../../../PasswordInput/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../../routes/Router';
+import {navigateResetSucessScreen} from '../../../../hooks/navigateResetSucessScreen';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SingUpScreen'>;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SingUpScreen({navigation}: ScreenProps) {
+  const {reset} = navigateResetSucessScreen();
+
   function submitForm() {
-    navigation.navigate('SucessScreen', {
+    reset({
       title: 'Sua conta foi criada com sucesso!',
       description: 'Agora é só fazer login na nossa plataforma',
       icon: {
@@ -19,6 +23,14 @@ export function SingUpScreen({navigation}: ScreenProps) {
         color: 'success',
       },
     });
+    // navigation.navigate('SucessScreen', {
+    //   title: 'Sua conta foi criada com sucesso!',
+    //   description: 'Agora é só fazer login na nossa plataforma',
+    //   icon: {
+    //     name: 'checkRound',
+    //     color: 'success',
+    //   },
+    // });
   }
   return (
     <Screen canGoBack scrollable>

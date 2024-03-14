@@ -3,15 +3,21 @@ import {Text} from '../../../../Text/Text';
 import {Button} from '../../../../Button/Button';
 import {TextInput} from '../../../../TextInput/TextInput';
 import {Screen} from '../../../../Screen/Screen';
-import {PasswordInput} from '../../../../PasswordInput/PasswordInput';
+
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../../../routes/Router';
+import {PasswordInput} from '../../../../PasswordInput/PasswordInput';
+import {Pressable} from 'react-native';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
 export function LoginScreen({navigation}: ScreenProps) {
   function navigateToSingUpScreen() {
     navigation.navigate('SingUpScreen');
+  }
+
+  function navigationToForgotPasswordScreen() {
+    navigation.navigate('ForgotPasswordScreen');
   }
   return (
     <Screen>
@@ -26,14 +32,12 @@ export function LoginScreen({navigation}: ScreenProps) {
         placeholder="Digite seu e-mail"
         boxProps={{mb: 's20'}}
       />
-      <PasswordInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        boxProps={{mb: 's48'}}
-      />
-      <Text preset="paragraphSmall" bold color="primary">
-        Esquecci minha senha
-      </Text>
+      <PasswordInput label="Senha" placeholder="Digite sua senha" />
+      <Pressable onPress={navigationToForgotPasswordScreen}>
+        <Text mt="s8" preset="paragraphSmall" bold color="primary">
+          Esquecci minha senha
+        </Text>
+      </Pressable>
       <Button title="Entrar" mt="s48" />
       <Button
         onPress={navigateToSingUpScreen}

@@ -8,7 +8,10 @@ import {RootStackParamList} from '../../../../routes/Router';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SucessScreen'>;
 
-export function SucessScreen({route}: ScreenProps) {
+export function SucessScreen({route, navigation}: ScreenProps) {
+  function goBackToBegin() {
+    navigation.goBack();
+  }
   return (
     <Screen>
       <Icon {...route.params.icon} />
@@ -18,7 +21,7 @@ export function SucessScreen({route}: ScreenProps) {
       <Text mt="s16" preset="paragraphLarge">
         {route.params.description}
       </Text>
-      <Button mt="s40" title="Voltar ao início" />
+      <Button onPress={goBackToBegin} mt="s40" title="Voltar ao início" />
     </Screen>
   );
 }
