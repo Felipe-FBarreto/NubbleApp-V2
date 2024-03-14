@@ -1,15 +1,18 @@
 import React from 'react';
-import {Screen} from '../../../components/Screen/Screen';
-import {TextInput} from '../../../components/TextInput/TextInput';
-import {Button} from '../../../components/Button/Button';
-import {Text} from '../../../components/Text/Text';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {Screen} from '../../../Screen/Screen';
+import {TextInput} from '../../../TextInput/TextInput';
+import {Button} from '../../../Button/Button';
+import {Text} from '../../../Text/Text';
+import {PasswordInput} from '../../../PasswordInput/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/Router';
+import {RootStackParamList} from '../../../../routes/Router';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SingUpScreen'>;
 
-export function SingUpScreen(props: ScreenProps) {
+export function SingUpScreen({navigation}: ScreenProps) {
+  function submitForm() {
+    navigation.navigate('SucessScreen');
+  }
   return (
     <Screen canGoBack scrollable>
       <Text mb="s32" preset="headingLarge">
@@ -31,7 +34,7 @@ export function SingUpScreen(props: ScreenProps) {
         placeholder="Digite sua senha"
         boxProps={{mb: 's48'}}
       />
-      <Button title="Criar minha conta" />
+      <Button onPress={submitForm} title="Criar minha conta" />
     </Screen>
   );
 }

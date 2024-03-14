@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text} from '../../../../components/Text/Text';
-import {Button} from '../../../../components/Button/Button';
-import {TextInput} from '../../../../components/TextInput/TextInput';
-import {Screen} from '../../../../components/Screen/Screen';
-import {PasswordInput} from '../../../../components/PasswordInput/PasswordInput';
+import {Text} from '../../../../Text/Text';
+import {Button} from '../../../../Button/Button';
+import {TextInput} from '../../../../TextInput/TextInput';
+import {Screen} from '../../../../Screen/Screen';
+import {PasswordInput} from '../../../../PasswordInput/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../../routes/Router';
+import {RootStackParamList} from '../../../../../routes/Router';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 
@@ -14,5 +15,5 @@ export function ScrollViewContainer({children}: Props) {
 }
 
 export function ViewContainer({children}: Props) {
-  return <View>{children}</View>;
+  return <View style={{flex: 1}}>{children}</View>;
 }
