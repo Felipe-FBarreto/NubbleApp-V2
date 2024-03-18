@@ -8,11 +8,8 @@ import {RootStackParamList} from '../../../../../routes/Router';
 import {Alert, Pressable} from 'react-native';
 import {FormTextInput} from '../../../../Form/FormTextInput';
 import {FormPasswordInput} from '../../../../Form/FormPasswordInput';
-
-type FormLoginType = {
-  email: string;
-  password: string;
-};
+import {LoginSchema, loginSchema} from './loginSchema';
+import {zodResolver} from '@hookform/resolvers/zod';
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
 export function LoginScreen({navigation}: ScreenProps) {
@@ -24,7 +21,8 @@ export function LoginScreen({navigation}: ScreenProps) {
     navigation.navigate('ForgotPasswordScreen');
   }
 
-  const {control, formState, handleSubmit} = useForm<FormLoginType>({
+  const {control, formState, handleSubmit} = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -32,7 +30,7 @@ export function LoginScreen({navigation}: ScreenProps) {
     mode: 'onChange',
   });
 
-  function onSubmitForm({email, password}: FormLoginType) {
+  function onSubmitForm({email, password}: LoginSchema) {
     Alert.alert(`Email ${email} ${'\n'} password ${password}`);
   }
 
@@ -68,7 +66,7 @@ export function LoginScreen({navigation}: ScreenProps) {
       />
       <Pressable onPress={navigationToForgotPasswordScreen}>
         <Text mt="s8" preset="paragraphSmall" bold color="primary">
-          Esquecci minha senha
+          Esqueci minha senha
         </Text>
       </Pressable>
       <Button

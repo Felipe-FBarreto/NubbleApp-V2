@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import React from 'react';
 import {Screen} from '../../../Screen/Screen';
 import {Button} from '../../../Button/Button';
@@ -9,20 +8,15 @@ import {navigateResetSucessScreen} from '../../../../hooks/navigateResetSucessSc
 import {FormTextInput} from '../../../Form/FormTextInput';
 import {useForm} from 'react-hook-form';
 import {FormPasswordInput} from '../../../Form/FormPasswordInput';
-
+import {SingUpSchema, singUpSchema} from './singUpSchema';
+import {zodResolver} from '@hookform/resolvers/zod';
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SingUpScreen'>;
-
-type FormSingUpType = {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SingUpScreen({navigation}: ScreenProps) {
   const {reset} = navigateResetSucessScreen();
-  const {control, formState, handleSubmit} = useForm<FormSingUpType>({
+  const {control, formState, handleSubmit} = useForm<SingUpSchema>({
+    resolver: zodResolver(singUpSchema),
     defaultValues: {
       username: '',
       fullName: '',
@@ -31,7 +25,8 @@ export function SingUpScreen({navigation}: ScreenProps) {
     },
     mode: 'onChange',
   });
-  function submitForm() {
+  function submitForm(FormValue: SingUpSchema) {
+    console.log(FormValue);
     reset({
       title: 'Sua conta foi criada com sucesso!',
       description: 'Agora é só fazer login na nossa plataforma',
@@ -52,13 +47,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
         boxProps={{mb: 's16'}}
         control={control}
         name="username"
-        rules={{
-          required: true,
-          pattern: {
-            value: /^@[\w\d_]+$/,
-            message: 'Seu username precisa começar com @',
-          },
-        }}
       />
       <FormTextInput
         control={control}
@@ -73,13 +61,6 @@ export function SingUpScreen({navigation}: ScreenProps) {
         placeholder="Digite seu e-mail"
         label="E-mail"
         name="email"
-        rules={{
-          required: true,
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'E-mail inválido',
-          },
-        }}
       />
       <FormPasswordInput
         label="Senha"
