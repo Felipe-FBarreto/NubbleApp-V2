@@ -1,10 +1,11 @@
 import React from 'react';
 import {Text} from '../Text/Text';
-// import {useTheme} from '@shopify/restyle';
-// import {Theme} from '../../theme/theme';
-import {TouchableOpacityBox, TouchableOpacityPropsBox} from '../Box/Box';
+import {
+  TouchableOpacityBox,
+  TouchableOpacityPropsBox,
+  ActivityIndicator,
+} from '@components';
 import {ButtonPreset, ButtonPresets} from './ButtonPresets';
-import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 type ButtonProps = {
   title: string;
@@ -18,6 +19,7 @@ export function Button({
   loading,
   preset = 'primary',
   disabled,
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   ...TouchableOpacityPropsBox
 }: ButtonProps) {
   const buttonPreset = ButtonPresets[preset][disabled ? 'disabled' : 'default'];

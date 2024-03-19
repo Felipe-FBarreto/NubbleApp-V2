@@ -1,11 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {LoginScreen} from '../components/screens/auth/Login/LoginScreen/LoginScreen';
-import {SingUpScreen} from '../components/screens/auth/SingUpScreen/SingUpScreen';
-import {SucessScreen} from '../components/screens/auth/SucessScreen/SucessScreen';
-import {IconProps} from '../components/Icon/Icon';
-import {ForgotPasswordScreen} from '../components/screens/auth/ForgotPasswordScreen/ForgotPasswordScreen';
+
+import {IconProps} from '@components';
+import {
+  ForgotPasswordScreen,
+  LoginScreen,
+  SingUpScreen,
+  SucessScreen,
+} from '@screens';
 
 export type RootStackParamList = {
   LoginScreen: undefined;

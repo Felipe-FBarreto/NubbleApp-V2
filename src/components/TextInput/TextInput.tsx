@@ -5,9 +5,9 @@ import {
   TextInputProps as RNTextInputProps,
   TextStyle,
 } from 'react-native';
-import {Box, SRTBoxProps} from '../Box/Box';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';
-import {useAppTheme} from '../../hooks/useAppTheme';
+import {Box, SRTBoxProps} from '@components';
+import {useAppTheme} from '@hooks';
 
 export type TextInputProps = {
   label: string;
@@ -29,7 +29,6 @@ export function TextInput({
   const focusInput = () => {
     inputRef.current?.focus();
   };
-
   const $textInputContainer: SRTBoxProps = {
     flexDirection: 'row',
     borderColor: erroMessage ? 'error' : 'gray4',
