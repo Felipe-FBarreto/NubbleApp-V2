@@ -1,11 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
-import {RootStackParamList} from '../routes/Router';
+import {AuthStackParamList} from '../routes/Router';
 
 export function navigateResetSucessScreen() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigation = useNavigation();
 
-  function reset(params: RootStackParamList['SucessScreen']) {
+  function reset(params: AuthStackParamList['SucessScreen']) {
     navigation.reset({
       index: 1,
       routes: [

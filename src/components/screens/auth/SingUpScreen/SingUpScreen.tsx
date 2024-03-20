@@ -6,16 +6,14 @@ import {
   FormPasswordInput,
   Text,
 } from '@components';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '@routes';
+import {AuthScreenProps} from '@routes';
 import {navigateResetSucessScreen} from '@hooks';
 import {useForm} from 'react-hook-form';
 import {SingUpSchema, singUpSchema} from './singUpSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SingUpScreen'>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function SingUpScreen({navigation}: ScreenProps) {
+export function SingUpScreen({navigation}: AuthScreenProps<'SingUpScreen'>) {
   const {reset} = navigateResetSucessScreen();
   const {control, formState, handleSubmit} = useForm<SingUpSchema>({
     resolver: zodResolver(singUpSchema),
