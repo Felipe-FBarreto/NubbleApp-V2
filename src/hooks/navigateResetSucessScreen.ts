@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import {AuthStackParamList} from '../routes/Router';
+import {AuthStackParamList} from '@routes';
 
 export function navigateResetSucessScreen() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
