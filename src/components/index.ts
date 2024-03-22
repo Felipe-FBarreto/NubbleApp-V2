@@ -18,3 +18,4 @@ export * from './PasswordInput/PasswordInput';
 export * from './Screen/Screen';
 export * from './Text/Text';
 export * from './TextInput/TextInput';
+export * from './PostItem/PostItem';
