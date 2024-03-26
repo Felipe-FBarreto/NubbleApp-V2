@@ -3,8 +3,9 @@ import React, {useEffect, useState} from 'react';
 import {AppTabScreenProps} from '@routes';
 import {Post, postService} from '@domain';
 import {FlatList} from 'react-native-gesture-handler';
-import {ListRenderItemInfo} from 'react-native';
+import {ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
 import {PostItem} from '@components';
+import {HomeHeader} from './HomeHeader/HomeHeader';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function HomeScreen({navigation}: AppTabScreenProps<'homeScreen'>) {
@@ -18,12 +19,19 @@ export function HomeScreen({navigation}: AppTabScreenProps<'homeScreen'>) {
   };
 
   return (
-    <Screen>
+    <Screen style={$screen}>
       <FlatList
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        ListHeaderComponent={<HomeHeader />}
       />
     </Screen>
   );
 }
+
+const $screen: StyleProp<ViewStyle> = {
+  paddingBottom: 0,
+  paddingHorizontal: 0,
+  paddingTop: 0,
+};

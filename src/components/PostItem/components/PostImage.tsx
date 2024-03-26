@@ -9,7 +9,11 @@ export function PostImage({imageURL}: Props) {
     <Image
       resizeMethod="resize"
       source={{uri: imageURL}}
-      style={{width: Dimensions.get('screen').width, height: 300}}
+      style={{
+        width: Dimensions.get('screen').width,
+        height: 300,
+        marginLeft: -24,
+      }}
     />
   );
 }

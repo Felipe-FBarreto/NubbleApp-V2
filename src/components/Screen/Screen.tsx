@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Box, TouchableOpacityBox, Icon, Text} from '@components';
+import {Box, TouchableOpacityBox, Icon, Text, SRTBoxProps} from '@components';
 import {useAppSafeArea} from '@hooks';
 import {KeyboardAvoidingView, Platform} from 'react-native';
 import {ScrollViewContainer, ViewContainer} from './components/screenContainer';
@@ -9,12 +9,14 @@ type ScreenProps = {
   children: React.ReactNode;
   canGoBack?: boolean;
   scrollable?: boolean;
-};
+} & SRTBoxProps;
 
 export function Screen({
   children,
   canGoBack = false,
   scrollable = false,
+  style,
+  ...boxProps
 }: ScreenProps) {
   const {top, bottom} = useAppSafeArea();
 
@@ -28,7 +30,8 @@ export function Screen({
       <Container>
         <Box
           paddingHorizontal="s24"
-          style={{paddingTop: top, paddingBottom: bottom}}>
+          style={[{paddingTop: top, paddingBottom: bottom}, style]}
+          {...boxProps}>
           {canGoBack && (
             <TouchableOpacityBox
               onPress={navigation.goBack}

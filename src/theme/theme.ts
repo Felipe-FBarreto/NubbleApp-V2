@@ -36,6 +36,8 @@ export const theme = createTheme({
 
     success: pallete.greenSuccess,
     successLight: pallete.greenSuccessLight,
+
+    marked: pallete.carrotSecondary,
   },
   spacing: {
     s4: 4,
