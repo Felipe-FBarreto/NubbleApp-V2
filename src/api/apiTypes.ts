@@ -14,3 +14,8 @@ export type PagesAPI<Data> = {
   meta: MetaDataPageAPI;
   data: Data[];
 };
+
+export type PagesParams = {
+  page?: number;
+  per_page?: number;
+};

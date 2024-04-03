@@ -1,49 +1,45 @@
+/* eslint-disable react-native/no-inline-styles */
+import React, {useRef} from 'react';
 import {Screen} from '@components';
-import React, {useEffect, useState} from 'react';
 import {AppTabScreenProps} from '@routes';
-import {Post, postService} from '@domain';
+import {Post, usePostList} from '@domain';
 import {FlatList} from 'react-native-gesture-handler';
-import {ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
+import {
+  ListRenderItemInfo,
+  RefreshControl,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {PostItem} from '@components';
 import {HomeHeader} from './HomeHeader/HomeHeader';
 import {HomeEmpty} from './HomeEmpty/HomeEmpty';
+import {useScrollToTop} from '@react-navigation/native';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function HomeScreen({navigation}: AppTabScreenProps<'homeScreen'>) {
-  const [postList, setPostList] = useState<Post[]>([]);
-  const [error, setError] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  async function fetchData() {
-    try {
-      setLoading(true);
-      const list = await postService.getList();
-      setPostList(list);
-    } catch {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  const {error, loading, postList, refresh, nextPageList} = usePostList();
   const renderItem = ({item}: ListRenderItemInfo<Post>) => {
     return <PostItem post={item} />;
   };
-
+  const flastListRef = useRef<FlatList<Post>>(null);
+  useScrollToTop(flastListRef);
   return (
     <Screen flex={1} style={$screen}>
       <FlatList
+        ref={flastListRef}
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderItem}
         contentContainerStyle={{flex: postList.length === 0 ? 1 : undefined}}
+        refreshing={loading}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
         ListHeaderComponent={<HomeHeader />}
+        onEndReached={nextPageList}
+        onEndReachedThreshold={0.3}
         ListEmptyComponent={
-          <HomeEmpty error={error} loading={loading} refetch={fetchData} />
+          <HomeEmpty error={error} loading={loading} refetch={refresh} />
         }
       />
     </Screen>
