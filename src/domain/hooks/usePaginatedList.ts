@@ -1,19 +1,22 @@
+import {Page} from '@types';
 import {useState, useEffect} from 'react';
-import {Post, postService} from '@domain';
 
-export function usePostList() {
-  const [postList, setPostList] = useState<Post[]>([]);
+export function usePaginatedList<Data>(
+  getList: (page: number) => Promise<Page<Data>>,
+) {
+  const [postList, setPostList] = useState<Data[]>([]);
   const [error, setError] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [hasNextPae, setHasNextPage] = useState(true);
+  const [hasNextPage, setHasNextPage] = useState(true);
   async function fetchInitialData() {
     try {
       setLoading(true);
-      const {data, meta} = await postService.getList(1);
+      const {data, meta} = await getList(1);
       setPostList(data);
       if (meta.hasNextPage) {
         setPage(2);
+        setHasNextPage(true);
       } else {
         setHasNextPage(false);
       }
@@ -30,7 +33,7 @@ export function usePostList() {
     }
     try {
       setLoading(true);
-      const {data, meta} = await postService.getList(page);
+      const {data, meta} = await getList(page);
       setPostList(prev => [...prev, ...data]);
       if (meta.hasNextPage) {
         setPage(prev => prev + 1);
