@@ -7,6 +7,7 @@ export type PostComments = {
     userName: string;
   };
   createdAt: string;
+  createdAtRelative: string;
 };
 
 export type PostCommentsAPI = {
