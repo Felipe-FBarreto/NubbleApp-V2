@@ -4,7 +4,7 @@ import {postCommentsApi} from './postComentsApi';
 import {postCommentsAdapter} from './postCommentsAdpter';
 import {apiAdapter} from '@api';
 
-const PER_PAGE = 10;
+const PER_PAGE = 5;
 
 export async function getList(
   postId: number,

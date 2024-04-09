@@ -9,7 +9,7 @@ export function PostBottom({author, commentCount, text, id}: Props) {
   const navigate = useNavigation();
   function navigateToPostComments() {
     navigate.navigate('postCommentsScreen', {
-      postId: id,
+      postId: parseInt(id, 10),
     });
   }
 
@@ -24,7 +24,8 @@ export function PostBottom({author, commentCount, text, id}: Props) {
           <Text
             onPress={navigateToPostComments}
             preset="paragraphSmall"
-            semiBold>
+            semiBold
+            color="primary">
             ver {commentCount} {commentCount > 1 ? 'comentários' : 'comentário'}
           </Text>
         )}

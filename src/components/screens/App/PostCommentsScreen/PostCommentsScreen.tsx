@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Box, Screen} from '@components';
 import {AppScreenProps} from '@routes';
@@ -5,14 +6,13 @@ import {usePostCommentsList} from '@domain';
 import {FlatList} from 'react-native-gesture-handler';
 import {ListRenderItemInfo} from 'react-native';
 import {PostComments} from 'src/domain/PostComments/postCommentsTypes';
-import {PostCommentsItem} from './components/PostCommentsItem';
+import {PostCommentsItem, PostCommentBottom} from './components/';
 
 export function PostCommentsScreen({
   route,
 }: AppScreenProps<'postCommentsScreen'>) {
   const postId = route.params.postId;
-
-  const {postList} = usePostCommentsList(postId);
+  const {postList, nextPageList, hasNextPage} = usePostCommentsList(postId);
   function renderItem({item}: ListRenderItemInfo<PostComments>) {
     return <PostCommentsItem postComment={item} />;
   }
@@ -22,7 +22,15 @@ export function PostCommentsScreen({
       <Box>
         <FlatList
           data={postList}
+          showsVerticalScrollIndicator={false}
           renderItem={renderItem}
+          contentContainerStyle={{paddingBottom: 100}}
+          ListFooterComponent={
+            <PostCommentBottom
+              nextFetchPage={nextPageList}
+              hasNextPage={hasNextPage}
+            />
+          }
           keyExtractor={item => item.id.toString()}
         />
       </Box>
