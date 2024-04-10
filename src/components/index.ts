@@ -20,3 +20,4 @@ export * from './Text/Text';
 export * from './TextInput/TextInput';
 export * from './PostItem/PostItem';
 export * from './ImageAvatar/ImageAvatar';
+export * from './TexteMessage/TexteMessage';
