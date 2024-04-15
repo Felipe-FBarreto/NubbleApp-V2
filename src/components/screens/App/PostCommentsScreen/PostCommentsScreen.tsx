@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
-import {Box, Screen, TexteMessage} from '@components';
+import React from 'react';
+import {Box, Screen, PostCommentTextMessage} from '@components';
 import {AppScreenProps} from '@routes';
 import {usePostCommentsList} from '@domain';
 import {FlatList} from 'react-native-gesture-handler';
@@ -11,11 +11,9 @@ import {PostCommentsItem, PostCommentBottom} from './components/';
 export function PostCommentsScreen({
   route,
 }: AppScreenProps<'postCommentsScreen'>) {
-  const [message, setMessage] = useState('');
   const postId = route.params.postId;
-  const {postList, nextPageList, hasNextPage} = usePostCommentsList(postId);
-
-  function onPressSend() {}
+  const {postList, nextPageList, hasNextPage, refresh} =
+    usePostCommentsList(postId);
 
   function renderItem({item}: ListRenderItemInfo<PostComments>) {
     return <PostCommentsItem postComment={item} />;
@@ -37,11 +35,7 @@ export function PostCommentsScreen({
           }
           keyExtractor={item => item.id.toString()}
         />
-        <TexteMessage
-          value={message}
-          onChangeText={setMessage}
-          onPressSend={onPressSend}
-        />
+        <PostCommentTextMessage postId={postId} addOnComment={refresh} />
       </Box>
     </Screen>
   );

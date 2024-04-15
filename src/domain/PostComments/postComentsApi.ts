@@ -1,7 +1,7 @@
 import {PagesAPI, PagesParams, api} from '@api';
 import {PostCommentsAPI} from './postCommentsTypes';
 
-export async function getList(
+async function getList(
   post_id: number,
   pageParams?: PagesParams,
 ): Promise<PagesAPI<PostCommentsAPI>> {
@@ -14,6 +14,16 @@ export async function getList(
   return response.data;
 }
 
+async function create(
+  post_id: number,
+  message: string,
+): Promise<PostCommentsAPI> {
+  const response = await api.post('user/post_comment', {post_id, message});
+
+  return response.data;
+}
+
 export const postCommentsApi = {
   getList,
+  create,
 };

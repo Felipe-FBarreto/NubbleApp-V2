@@ -7,7 +7,7 @@ import {
   TextInputProps,
 } from 'react-native';
 
-type Props = {onPressSend: () => void} & TextInputProps;
+type Props = {onPressSend: (message: string) => void} & TextInputProps;
 
 export function TexteMessage({value, onPressSend, ...rnTextInputProps}: Props) {
   const inputRef = useRef<RNTextInput>(null);
@@ -31,7 +31,9 @@ export function TexteMessage({value, onPressSend, ...rnTextInputProps}: Props) {
           style={$textInputStyle}
           {...rnTextInputProps}
         />
-        <Pressable disabled={sendIsDisabled} onPress={onPressSend}>
+        <Pressable
+          disabled={sendIsDisabled}
+          onPress={() => onPressSend(value || '')}>
           <Text bold color={sendIsDisabled ? 'gray2' : 'primary'}>
             Enviar
           </Text>
