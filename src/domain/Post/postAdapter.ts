@@ -8,6 +8,7 @@ function toPost(postApi: PostAPI): Post {
       name: postApi.user.full_name,
       profileURL: postApi.user.profile_url,
       userName: postApi.user.username,
+      id: postApi.user.id,
     },
     imageURL: postApi.image_url,
     commentCount: parseInt(postApi.meta.comments_count, 10),

@@ -6,10 +6,12 @@ import React from 'react';
 type Props = Pick<Post, 'commentCount' | 'text' | 'author' | 'id'>;
 
 export function PostBottom({author, commentCount, text, id}: Props) {
+  console.log('🚀 ~ PostBottom ~ author:', author);
   const navigate = useNavigation();
   function navigateToPostComments() {
     navigate.navigate('postCommentsScreen', {
       postId: parseInt(id, 10),
+      postAuthorId: author.id,
     });
   }
 

@@ -27,7 +27,34 @@ async function create(post_id: number, message: string): Promise<PostComments> {
   return postCommentsAdapter.toPostComments(postCommentMessageApi);
 }
 
+async function remove(postCommentId: number): Promise<string> {
+  const response = await postCommentsApi.remove(postCommentId);
+  return response.message;
+}
+
+function isAllowToDelete(
+  postComment: PostComments,
+  user_id: number,
+  postAuthorId: number,
+): boolean {
+  console.log('🚀 ~ user_id:', user_id);
+  console.log('🚀 ~ postComment.author.id:', postComment.author.id);
+  console.log('🚀 ~ postAuthorId:', postAuthorId);
+
+  if (postComment.author.id === user_id) {
+    return true;
+  }
+
+  if (postAuthorId === user_id) {
+    return true;
+  }
+
+  return false;
+}
+
 export const postComentService = {
   getList,
   create,
+  remove,
+  isAllowToDelete,
 };

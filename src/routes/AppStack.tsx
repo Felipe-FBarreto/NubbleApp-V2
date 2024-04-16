@@ -10,6 +10,7 @@ export type AppStackScreensParams = {
   settingsScreen: undefined;
   postCommentsScreen: {
     postId: number;
+    postAuthorId: number;
   };
 };
 const Stack = createStackNavigator<AppStackScreensParams>();

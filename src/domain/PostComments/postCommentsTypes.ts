@@ -5,6 +5,7 @@ export type PostComments = {
     profileURL: string;
     name: string;
     userName: string;
+    id: number;
   };
   createdAt: string;
   createdAtRelative: string;

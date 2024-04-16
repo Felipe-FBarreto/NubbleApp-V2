@@ -10,6 +10,7 @@ function toPostComments(postCommentsApi: PostCommentsAPI): PostComments {
       name: postCommentsApi.user.full_name,
       profileURL: postCommentsApi.user.profile_url,
       userName: postCommentsApi.user.username,
+      id: postCommentsApi.user.id,
     },
     createdAt: postCommentsApi.created_at,
   };
