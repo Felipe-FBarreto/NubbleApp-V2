@@ -1,51 +1,15 @@
-import React, {createContext, useContext, useState} from 'react';
+import {ToastService} from './toastTypes';
+import {useToastServiceZustand, useToastZustand} from './useToastZustand';
 
-type ToastProps = {
-  message: string;
-  type?: 'sucess' | 'error';
-  duration?: number;
-  action?: {
-    title: string;
-    onPress: () => void;
-  };
-};
-
-type ToastService = {
-  toast: ToastProps | null;
-  showToast: (toast: ToastProps) => void;
-  hiddenToast: () => void;
-};
-
-const ToastContext = createContext<ToastService>({
-  toast: null,
-  showToast: () => {},
-  hiddenToast: () => {},
-});
-
-export function ToastProvider({children}: React.PropsWithChildren) {
-  const [toast, setToast] = useState<ToastService['toast']>(null);
-
-  function showToast(_toast: ToastProps) {
-    setToast(_toast);
-  }
-
-  function hiddenToast() {
-    setToast(null);
-  }
-
-  return (
-    <ToastContext.Provider value={{toast, showToast, hiddenToast}}>
-      {children}
-    </ToastContext.Provider>
-  );
+export function useToast(): ToastService['toast'] {
+  // const {toast} = useToastContext();
+  // return toast;
+  return useToastZustand();
 }
 
-export function useToast(): ToastService {
-  const {toast, hiddenToast, showToast} = useContext(ToastContext);
-
-  return {
-    toast,
-    showToast,
-    hiddenToast,
-  };
+export function useToastService(): Pick<
+  ToastService,
+  'showToast' | 'hideToast'
+> {
+  return useToastServiceZustand();
 }
