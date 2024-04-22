@@ -22,3 +22,4 @@ export * from './PostItem/PostItem';
 export * from './ImageAvatar/ImageAvatar';
 export * from './TexteMessage/TexteMessage';
 export * from './PostCommentTextMessage/PostCommentTextMessage';
+export * from './Toast/Toast';

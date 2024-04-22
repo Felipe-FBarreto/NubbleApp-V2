@@ -37,10 +37,6 @@ function isAllowToDelete(
   user_id: number,
   postAuthorId: number,
 ): boolean {
-  console.log('🚀 ~ user_id:', user_id);
-  console.log('🚀 ~ postComment.author.id:', postComment.author.id);
-  console.log('🚀 ~ postAuthorId:', postAuthorId);
-
   if (postComment.author.id === user_id) {
     return true;
   }

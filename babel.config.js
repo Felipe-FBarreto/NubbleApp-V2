@@ -17,6 +17,7 @@ module.exports = {
           '@types': './src/types',
           '@utils': './src/utils',
           '@infra': './src/_infra',
+          '@services': './src/services',
         },
       },
     ],

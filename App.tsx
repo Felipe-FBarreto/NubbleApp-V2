@@ -4,12 +4,17 @@ import {theme} from './src/theme/theme';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Router} from './src/routes/Router';
+import {Toast} from '@components';
+import {ToastProvider} from '@services';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <Router />
+        <ToastProvider>
+          <Router />
+          <Toast />
+        </ToastProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );
