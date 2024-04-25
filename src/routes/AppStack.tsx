@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
-import {SettingsScreen, PostCommentsScreen} from '@screens';
+import {SettingsScreen, PostCommentsScreen, ProfileScreen} from '@screens';
 import {AppTaBottomParamList, AppTabNavigator} from '@routes';
 import {NavigatorScreenParams} from '@react-navigation/native';
 
@@ -11,6 +11,9 @@ export type AppStackScreensParams = {
   postCommentsScreen: {
     postId: number;
     postAuthorId: number;
+  };
+  profileScreen: {
+    userId: number;
   };
 };
 const Stack = createStackNavigator<AppStackScreensParams>();
@@ -25,6 +28,7 @@ export function AppStack() {
       <Stack.Screen name="appTabBottomNavigator" component={AppTabNavigator} />
       <Stack.Screen name="settingsScreen" component={SettingsScreen} />
       <Stack.Screen name="postCommentsScreen" component={PostCommentsScreen} />
+      <Stack.Screen name="profileScreen" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }

@@ -31,7 +31,7 @@ export const mapScreenToProps: Record<
       unFocused: 'bookmark',
     },
   },
-  myProfile: {
+  myProfileScreen: {
     label: 'Perfil',
     icon: {
       focused: 'profileFill',

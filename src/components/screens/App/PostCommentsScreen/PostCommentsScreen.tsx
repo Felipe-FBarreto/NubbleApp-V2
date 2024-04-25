@@ -13,7 +13,7 @@ export function PostCommentsScreen({
 }: AppScreenProps<'postCommentsScreen'>) {
   const postId = route.params.postId;
   const postAuthorId = route.params.postAuthorId;
-  const {postList, nextPageList, hasNextPage, refresh} =
+  const {list, nextPageList, hasNextPage, refresh} =
     usePostCommentsList(postId);
   const {id} = userId();
   function renderItem({item}: ListRenderItemInfo<PostComments>) {
@@ -31,7 +31,7 @@ export function PostCommentsScreen({
     <Screen flex={1} title="Comentários" canGoBack>
       <Box flex={1}>
         <FlatList
-          data={postList}
+          data={list}
           showsVerticalScrollIndicator={false}
           renderItem={renderItem}
           contentContainerStyle={{paddingBottom: 100}}

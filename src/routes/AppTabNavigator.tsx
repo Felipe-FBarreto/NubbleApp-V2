@@ -7,8 +7,8 @@ import {
 import {
   FavoriteScreen,
   HomeScreen,
-  MyProfileScreen,
   NewPostScreen,
+  MyProfileScreen,
 } from '@screens';
 import {AppTabBarCustom} from './AppTabBarCustom';
 
@@ -16,7 +16,7 @@ export type AppTaBottomParamList = {
   homeScreen: undefined;
   newPostScreen: undefined;
   favoriteScreen: undefined;
-  myProfile: undefined;
+  myProfileScreen: undefined;
 };
 
 const Tab = createBottomTabNavigator<AppTaBottomParamList>();
@@ -36,7 +36,7 @@ export function AppTabNavigator() {
       <Tab.Screen name="homeScreen" component={HomeScreen} />
       <Tab.Screen name="newPostScreen" component={NewPostScreen} />
       <Tab.Screen name="favoriteScreen" component={FavoriteScreen} />
-      <Tab.Screen name="myProfile" component={MyProfileScreen} />
+      <Tab.Screen name="myProfileScreen" component={MyProfileScreen} />
     </Tab.Navigator>
   );
 }

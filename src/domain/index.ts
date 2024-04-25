@@ -8,3 +8,4 @@ export * from './PostComments/postCommentsTypes';
 export * from './PostComments/useCases/usePostCommentCreate';
 export * from './PostComments/useCases/usePostCommentRemove';
 export * from './Auth';
+export * from './User/useCases/useUserGetById';

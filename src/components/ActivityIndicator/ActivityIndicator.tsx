@@ -7,9 +7,9 @@ import {Theme, ThemeColors} from '@theme';
 import {useTheme} from '@shopify/restyle';
 
 type Props = Omit<ActivityIndicatorProps, 'color'> & {
-  color: ThemeColors;
+  color?: ThemeColors;
 };
-export const ActivityIndicator = ({color}: Props) => {
+export const ActivityIndicator = ({color = 'primary'}: Props) => {
   const {colors} = useTheme<Theme>();
   return <RNActivityIndicator color={colors[color]} />;
 };
