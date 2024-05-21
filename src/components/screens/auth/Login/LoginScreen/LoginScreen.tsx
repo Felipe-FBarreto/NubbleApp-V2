@@ -13,6 +13,8 @@ import {Alert, Pressable} from 'react-native';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {loginSchema, LoginSchema} from './loginSchema';
 import {AuthScreenProps} from '@routes';
+import { useAuthSingIn } from '@domain';
+import { useToastService } from '@services';
 
 export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   function navigateToSingUpScreen() {
@@ -22,6 +24,9 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   function navigationToForgotPasswordScreen() {
     navigation.navigate('ForgotPasswordScreen');
   }
+  const {showToast} = useToastService()
+
+  const {isLoading,singIn} = useAuthSingIn({onError: message => showToast({message,type:'error'})})
 
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -33,7 +38,7 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
   });
 
   function onSubmitForm({email, password}: LoginSchema) {
-    Alert.alert(`Email ${email} ${'\n'} password ${password}`);
+    singIn({email,password})
   }
 
   return (
@@ -72,6 +77,7 @@ export function LoginScreen({navigation}: AuthScreenProps<'LoginScreen'>) {
         </Text>
       </Pressable>
       <Button
+        loading={isLoading}
         disabled={!formState.isValid}
         onPress={handleSubmit(onSubmitForm)}
         title="Entrar"

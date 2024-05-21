@@ -1,16 +1,21 @@
 import React from 'react';
-import {Button, Screen} from '@components';
-import {useNavigation} from '@react-navigation/native';
+import {Box, Button, Icon, Screen, Text} from '@components';
+import { useAuthCredentials } from '@services';
+import { AppTabScreenProps } from '@routes';
 
-export function MyProfileScreen() {
-  const navigation = useNavigation();
-
+export function MyProfileScreen({navigation}:AppTabScreenProps<'myProfileScreen'>) {
+  const {authCredentials} = useAuthCredentials()
+  const name = authCredentials?.user.fullName
   function navigationToSettings() {
     navigation.navigate('settingsScreen');
   }
+
   return (
     <Screen>
-      <Button title="Settings" onPress={navigationToSettings} />
+      <Box flexDirection='row' justifyContent='space-between' alignItems='center'>
+        {name && <Text preset='headingMedium'>{name}</Text>}
+        <Icon name='settings' onPress={() => navigation.navigate('settingsScreen')}/>
+      </Box>
     </Screen>
   );
 }

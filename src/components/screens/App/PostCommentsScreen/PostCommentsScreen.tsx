@@ -13,14 +13,14 @@ export function PostCommentsScreen({
 }: AppScreenProps<'postCommentsScreen'>) {
   const postId = route.params.postId;
   const postAuthorId = route.params.postAuthorId;
-  const {list, nextPageList, hasNextPage, refresh} =
+  const {list, nextPageList, hasNextPage} =
     usePostCommentsList(postId);
   const {id} = userId();
   function renderItem({item}: ListRenderItemInfo<PostComments>) {
     return (
       <PostCommentsItem
+        postId={postId}
         postComment={item}
-        onRemoveComment={refresh}
         userId={id}
         postAuthorId={postAuthorId}
       />
@@ -43,7 +43,7 @@ export function PostCommentsScreen({
           }
           keyExtractor={item => item.id.toString()}
         />
-        <PostCommentTextMessage postId={postId} addOnComment={refresh} />
+        <PostCommentTextMessage postId={postId}/>
       </Box>
     </Screen>
   );

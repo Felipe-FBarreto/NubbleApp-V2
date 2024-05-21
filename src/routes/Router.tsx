@@ -3,12 +3,30 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {AppStack} from './AppStack';
 import {AuthStack} from './AuthStack';
+import { useAuthCredentials } from '@services';
+import { ActivityIndicator, Box } from '@components';
 
-const authentication = true;
+
 export function Router() {
+  
+const {authCredentials, isLoading} = useAuthCredentials()
+
+if(isLoading){
+  return (
+    <Box 
+      flex={1}
+      backgroundColor='background'
+      justifyContent='center'
+      alignItems='center'
+    >
+      <ActivityIndicator size="large"/>
+    </Box>
+  )
+}
+
   return (
     <NavigationContainer>
-      {authentication ? <AppStack /> : <AuthStack />}
+      {authCredentials ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
 }

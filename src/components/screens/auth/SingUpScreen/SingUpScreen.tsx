@@ -11,30 +11,37 @@ import {navigateResetSucessScreen} from '@hooks';
 import {useForm} from 'react-hook-form';
 import {SingUpSchema, singUpSchema} from './singUpSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
-
+import {useAuthSingUp} from '@domain'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SingUpScreen({navigation}: AuthScreenProps<'SingUpScreen'>) {
   const {reset} = navigateResetSucessScreen();
+  const {isLoading,singUp} = useAuthSingUp({
+    onSuccess: () => {
+      reset({
+        title: 'Sua conta foi criada com sucesso!',
+        description: 'Agora é só fazer login na nossa plataforma',
+        icon: {
+          name: 'checkRound',
+          color: 'success',
+        },
+      });
+    }
+  })
+
   const {control, formState, handleSubmit} = useForm<SingUpSchema>({
     resolver: zodResolver(singUpSchema),
     defaultValues: {
       username: '',
-      fullName: '',
+      firstName: '',
+      lastName:"",
       email: '',
       password: '',
     },
     mode: 'onChange',
   });
-  function submitForm(FormValue: SingUpSchema) {
-    console.log(FormValue);
-    reset({
-      title: 'Sua conta foi criada com sucesso!',
-      description: 'Agora é só fazer login na nossa plataforma',
-      icon: {
-        name: 'checkRound',
-        color: 'success',
-      },
-    });
+  function submitForm(formValue: SingUpSchema) {
+    singUp(formValue)
+   
   }
   return (
     <Screen canGoBack scrollable>
@@ -50,9 +57,17 @@ export function SingUpScreen({navigation}: AuthScreenProps<'SingUpScreen'>) {
       />
       <FormTextInput
         control={control}
-        name="fullName"
-        label="Nome completo"
-        placeholder="Digite seu nome completo"
+        name="firstName"
+        label="Nome"
+        placeholder="Digite seu nome"
+        boxProps={{mb: 's16'}}
+        autoCapitalize="words"
+      />
+      <FormTextInput
+        control={control}
+        name="lastName"
+        label="Sobrenome"
+        placeholder="Digite seu sobrenome"
         boxProps={{mb: 's16'}}
         autoCapitalize="words"
       />
@@ -70,6 +85,7 @@ export function SingUpScreen({navigation}: AuthScreenProps<'SingUpScreen'>) {
         boxProps={{mb: 's48', mt: 's16'}}
       />
       <Button
+        loading={isLoading}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
         title="Criar minha conta"

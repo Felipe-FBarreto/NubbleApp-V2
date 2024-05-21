@@ -22,7 +22,6 @@ export function ForgotPasswordScreen({
   });
 
   function navigateToSucessScreen(FormValue: ForgotPassword) {
-    console.log('🚀 ~ navigateToSucessScreen ~ FormValue:', FormValue);
     reset({
       title: 'Enviamos as instruções para seu e-mail',
       description:
